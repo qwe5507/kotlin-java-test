@@ -6,9 +6,12 @@ import org.springframework.stereotype.Service;
 
 // 이벤트 발행 예시
 @Service
-@RequiredArgsConstructor
 public class OrderService {
     private final ApplicationEventPublisher publisher;
+
+    public OrderService(final ApplicationEventPublisher publisher) {
+        this.publisher = publisher;
+    }
 
     public void completeOrder(Long orderId) {
         System.out.println("✅ 주문 처리 완료: " + orderId);
